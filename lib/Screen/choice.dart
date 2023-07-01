@@ -26,7 +26,7 @@ class ChoiceScreen extends StatelessWidget {
                 int number = int.parse(numberController.text);
 
                 // BHAL INTENT LI F JAVA
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => mainContainer(CalculationScreen(number, "s"))));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => mainContainer(CalculationScreen(number, "opposite"))));
               }on Exception {
                 SnackBar snackBar = const SnackBar(
                     content: Row(
