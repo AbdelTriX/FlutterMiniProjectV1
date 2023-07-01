@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mini_project01/Screen/calculation.dart';
+import 'package:mini_project01/Screen/mainContainer.dart';
 
 class ChoiceScreen extends StatelessWidget {
   const ChoiceScreen({super.key});
@@ -22,7 +24,9 @@ class ChoiceScreen extends StatelessWidget {
 
               try{
                 int number = int.parse(numberController.text);
-                print(number);
+
+                // BHAL INTENT LI F JAVA
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => mainContainer(CalculationScreen())));
               }on Exception {
                 SnackBar snackBar = const SnackBar(
                     content: Row(

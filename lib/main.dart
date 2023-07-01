@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mini_project01/Screen/calculation.dart';
 
 import 'Screen/choice.dart';
+import 'Screen/mainContainer.dart';
 
 
 void main() {
@@ -15,15 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Mini Projet 01"),
-        ),
-        body: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: ChoiceScreen(),
-        ),
-      ),
+      home: mainContainer(ChoiceScreen()),
     );
   }
 }
