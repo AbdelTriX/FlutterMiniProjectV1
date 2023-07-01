@@ -19,7 +19,25 @@ class ChoiceScreen extends StatelessWidget {
         ),
         ElevatedButton(
             onPressed: () {
-              int number = int.parse(numberController.text);
+
+              try{
+                int number = int.parse(numberController.text);
+                print(number);
+              }on Exception {
+                SnackBar snackBar = const SnackBar(
+                    content: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.error, color: Colors.red),
+                        SizedBox(width: 5,),
+                        Text("You should enter an Integer"),
+                      ],
+                    ),
+                    duration: Duration(seconds: 2),
+                );
+
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
             },
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
