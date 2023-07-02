@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project01/Screen/calculation.dart';
 import 'package:mini_project01/Screen/mainContainer.dart';
+import 'package:mini_project01/classes/Operation.dart';
 
 class ChoiceScreen extends StatefulWidget {
   const ChoiceScreen({super.key});
@@ -10,12 +11,38 @@ class ChoiceScreen extends StatefulWidget {
 }
 
 class _ChoiceScreenState extends State<ChoiceScreen> {
-  String _operation = "opposite";
+  TextEditingController numberController = TextEditingController();
+  final List<Operation> _operations = [
+    Operation("Opposite", "opposite"),
+    Operation("Absolute value", "absolute-value"),
+    Operation("Square", "square"),
+  ];
 
+  String _operation = "opposite";
+  List<DropdownMenuItem<String>> _items = [];
+
+  //   DropdownMenuItem(value: "opposite", child: Text("Opposite")),
+  //   DropdownMenuItem(
+  //       value: "absolute-value",
+  //       child: Text("Absolute value")),
+  //   DropdownMenuItem(value: "square", child: Text("Square"))
+  // ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    for (Operation op in _operations) {
+      _items.add(DropdownMenuItem(
+        child: Text(op.text),
+        value: op.value,
+      ));
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController numberController = TextEditingController();
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -25,17 +52,10 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
           decoration: const InputDecoration(hintText: 'Number'),
         ),
         DropdownButton<String>(
-          items: const [
-            DropdownMenuItem(value: "opposite", child: Text("Opposite")),
-            DropdownMenuItem(
-                value: "absolute-value",
-                child: Text("Absolute value")),
-            DropdownMenuItem(value: "square", child: Text("Square"))
-          ],
+          items: _items,
           onChanged: (value) {
             setState(() {
               _operation = value!;
-
             });
           },
           value: _operation,
